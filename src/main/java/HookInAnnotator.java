@@ -42,7 +42,7 @@ public class HookInAnnotator implements Annotator {
         PsiMethod method = (PsiMethod) element;
 
         String parentClassName = ((PsiClass) method.getParent()).getQualifiedName();
-        if(!parentClassName.startsWith("net."))
+        if(parentClassName == null || parentClassName.startsWith("net."))
             return;
 
         String thisMethodName =  method.getName();
@@ -56,6 +56,8 @@ public class HookInAnnotator implements Annotator {
         GlobalSearchScope scope = GlobalSearchScope.moduleScope(module);
         PsiClass annotationClass = JavaPsiFacade.getInstance(project)
                 .findClass("gloomyfolken.hooklib.asm.Hook", scope);
+        if(annotationClass == null)
+            return;
 
         List<PsiMethod> hookMethods = new ArrayList<>();
 
