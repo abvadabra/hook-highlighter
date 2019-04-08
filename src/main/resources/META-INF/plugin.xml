@@ -1,0 +1,14 @@
+<idea-plugin>
+    <id>ru.abvadabra.hook-highlighter</id>
+    <name>Hook Highlighter</name>
+    <version>0.0.1</version>
+    <vendor email="dummy" url="dummy">dummy</vendor>
+
+    <depends>com.intellij.modules.lang</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <annotator language="JAVA" implementationClass="HookOutAnnotator"/>
+        <annotator language="JAVA" implementationClass="HookInAnnotator"/>
+    </extensions>
+
+</idea-plugin>
